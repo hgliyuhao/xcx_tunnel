@@ -2,7 +2,7 @@ const app = getApp();
 const { getEchoes, getPreferenceGroups } = require('../../services/echoService');
 
 const WHISPERS = [
-  '静下心来聆听城市的呼吸。',
+  '静下心来聆听内心的呼吸。',
   '生命自有它的节奏和安排',
   '轻轻拥抱自己的脆弱，那里藏着你最真实的力量',
   '留一个角落给内心真实的声音'
