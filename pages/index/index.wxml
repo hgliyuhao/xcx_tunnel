@@ -1,0 +1,88 @@
+<view class="page-root theme-{{theme}}">
+  <view class="background-layer">
+    <block wx:for="{{particles}}" wx:key="index">
+      <view class="particle particle-{{index}}"></view>
+    </block>
+  </view>
+
+  <view class="top-bar" style="top: {{topBarTop}}px;">
+    <text class="slogan">{{slogan}}</text>
+    <view class="theme-toggle" bindtap="onToggleTheme">
+      <text class="theme-icon">{{theme === 'night' ? moonIcon : sunIcon}}</text>
+    </view>
+  </view>
+
+  <view class="content" style="padding: {{contentTopPadding}}px 60rpx 220rpx;">
+    <view class="echo-card {{echoAnimation}}" wx:if="{{activeEcho && !loading}}" bindtap="onEchoCardTap" bindtouchstart="onEchoTouchStart" bindtouchend="onEchoTouchEnd">
+      <text class="echo-text">{{activeEcho.text}}</text>
+      <text class="echo-source">—— {{activeEcho.source}}</text>
+    </view>
+    <view class="echo-skeleton" wx:if="{{loading}}">
+      <view class="skeleton-line skeleton-line-1"></view>
+      <view class="skeleton-line skeleton-line-2"></view>
+      <view class="skeleton-line skeleton-line-3"></view>
+    </view>
+    <view class="empty-state" wx:if="{{emptyState && !loading}}">
+      <text class="empty-title">今日的回声还在路上</text>
+      <text class="empty-sub">试着调整偏好，或许会遇见新的灵感</text>
+      <button class="empty-action" bindtap="onResetPreferences">重置偏好</button>
+    </view>
+    <view class="whisper" wx:if="{{showWhisper}}">
+      <text>{{activeWhisper}}</text>
+    </view>
+  </view>
+
+  <view class="signature">回声集</view>
+
+  <view class="action-bar theme-{{theme}}">
+    <view class="action-button" bindtap="onNextEcho">
+      <text class="action-label">换一条</text>
+    </view>
+    <view class="action-button" bindtap="onOpenPreferencePanel">
+      <text class="action-label">偏好</text>
+    </view>
+    <view class="action-button {{activeEcho && favoriteSet[activeEcho.id] ? 'favorite-active' : ''}}" bindtap="onToggleFavorite">
+      <text class="action-label">{{activeEcho && favoriteSet[activeEcho.id] ? '已收藏' : '收藏'}}</text>
+    </view>
+    <view class="action-button" bindtap="onOpenSettings">
+      <text class="action-label">设置</text>
+    </view>
+  </view>
+
+  <view class="feedback-sheet" wx:if="{{feedbackSheetVisible}}">
+    <view class="feedback-mask" bindtap="closeFeedbackSheet"></view>
+    <view class="feedback-body theme-{{theme}}">
+      <text class="feedback-title">我们想听听你的反馈</text>
+      <button class="feedback-button" open-type="feedback" bindtap="closeFeedbackSheet">打开微信反馈</button>
+      <button class="feedback-cancel" bindtap="closeFeedbackSheet">取消</button>
+    </view>
+  </view>
+
+  <view class="toast" wx:if="{{showToast}}">
+    <text>{{toastMessage}}</text>
+  </view>
+
+  <view class="preference-panel" wx:if="{{preferencePanelVisible}}">
+    <view class="panel-mask" bindtap="onClosePreferencePanel"></view>
+    <view class="panel-body theme-{{theme}}" catchtap="noop">
+      <view class="panel-header">
+        <text class="panel-title">你想听到哪一类回声？</text>
+        <view class="panel-close" bindtap="onClosePreferencePanel">×</view>
+      </view>
+      <scroll-view class="panel-content" scroll-y>
+        <view class="category-list">
+          <block wx:for="{{preferenceGroups}}" wx:key="id">
+            <view class="category-item {{editingTagMap[item.id] ? 'category-item-active' : ''}}" data-tag="{{item.id}}" bindtap="onToggleTag">
+              <text class="category-item-label">{{item.label}}</text>
+              <text class="category-item-description">{{item.description}}</text>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+      <view class="panel-footer">
+        <button class="ghost-button" bindtap="onResetEditing">重置</button>
+        <button class="primary-button" bindtap="onConfirmPreferences">完成</button>
+      </view>
+    </view>
+  </view>
+</view>
