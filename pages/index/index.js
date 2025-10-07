@@ -3,8 +3,10 @@ const { getEchoes, getPreferenceGroups } = require('../../services/echoService')
 
 const WHISPERS = [
   '静下心来聆听自己的呼吸。',
-  '把心事托付给夜色守护。',
-  '黎明会带来新的答案。'
+  '轻轻拥抱自己的脆弱，那里藏着你最真实的力量',
+  '在喧嚣之中，留一个角落给内心真实的声音',
+  '安住于此刻的宁静',
+  '生命自有它的节奏和安排'
 ];
 
 Page({
