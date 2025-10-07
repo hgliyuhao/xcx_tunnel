@@ -2,14 +2,14 @@
 const { getEchoes, getPreferenceGroups } = require('../../services/echoService');
 
 const WHISPERS = [
-  '静下心来聆听城市的呼吸。',
+  '静下心来聆听自己的呼吸。',
   '把心事托付给夜色守护。',
   '黎明会带来新的答案。'
 ];
 
 Page({
   data: {
-    slogan: '让每一次呼吸都柔软下来。',
+    slogan: '给自己更多的爱',
     loading: true,
     activeEcho: null,
     echoes: [],
@@ -29,8 +29,8 @@ Page({
     toastMessage: '',
     showToast: false,
     emptyState: false,
-    topBarTop: 60,
-    contentTopPadding: 200,
+    topBarTop: 76,
+    contentTopPadding: 216,
     moonIcon: '🌙',
     sunIcon: '☀'
   },
@@ -99,11 +99,12 @@ Page({
     const info = wx.getSystemInfoSync();
     const statusBar = info.statusBarHeight || 0;
     const menuRect = wx.getMenuButtonBoundingClientRect ? wx.getMenuButtonBoundingClientRect() : null;
-    let topBarTop = statusBar + 20;
-    let contentTopPadding = statusBar + 140;
+    const extraOffset = 32;
+    let topBarTop = statusBar + 20 + extraOffset;
+    let contentTopPadding = statusBar + 140 + extraOffset;
     if (menuRect) {
-      topBarTop = menuRect.top;
-      contentTopPadding = menuRect.bottom + 40;
+      topBarTop = menuRect.top + extraOffset;
+      contentTopPadding = menuRect.bottom + 40 + extraOffset;
     }
     this.setData({ topBarTop, contentTopPadding });
   },

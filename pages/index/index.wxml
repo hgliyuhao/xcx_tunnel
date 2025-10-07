@@ -32,7 +32,7 @@
     </view>
   </view>
 
-  <view class="signature">回声集</view>
+  <view class="signature">隧道</view>
 
   <view class="action-bar theme-{{theme}}">
     <view class="action-button" bindtap="onNextEcho">
