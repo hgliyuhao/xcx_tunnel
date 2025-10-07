@@ -291,7 +291,7 @@ const echoes = [
 
   // —— 从头再来（restart）
   { id: 'lyr-restart-015', text: '怎么大风越狠，我心越荡。', source: '《野子》— 苏运莹', tags: ['restart', 'rescue'], tone: 'night' },
-  { id: 'lyr-restart-016', text: '逆风的方向，更适合飞翔。', source: '《逆风飞翔》— 金志文', tags: ['restart', 'hope'], tone: 'night' },
+  { id: 'lyr-restart-016', text: '逆风的方向，更适合飞翔。', source: '《倔强》— 五月天', tags: ['restart', 'hope'], tone: 'night' },
   { id: 'lyr-restart-017', text: '命运就算颠沛流离，也不放弃。', source: '《红日》— 李克勤', tags: ['restart', 'hope'], tone: 'night' },
 
   // —— 还会好起来（hope）
@@ -328,16 +328,6 @@ const echoes = [
   { id: 'lyr-learn-015', text: '不经历风雨，怎么见彩虹。', source: '《真心英雄》— 李宗盛/成龙/周华健/张学友', tags: ['learn', 'restart'], tone: 'dawn' },
   { id: 'lyr-learn-016', text: '给自己一点时间，去成为更好的自己。', source: '《给自己的歌》— 李宗盛', tags: ['learn', 'present'], tone: 'dawn' },
   { id: 'lyr-learn-017', text: '走得再远，也别忘了为什么出发。', source: '《平凡之路》— 朴树', tags: ['learn', 'meaning'], tone: 'dawn' },
-
-  // —— 和解当下（accept）
-  { id: 'lyr-accept-015', text: '其实我不快乐，却还要笑着。', source: '《演员》— 薛之谦', tags: ['accept', 'see_self'], tone: 'night' },
-  { id: 'lyr-accept-016', text: '如果这就是爱情，让我学会承受和放手。', source: '《如果这就是爱情》— 张靓颖', tags: ['accept', 'love'], tone: 'night' },
-  { id: 'lyr-accept-017', text: '原来你什么都不想要，我知道。', source: '《后来》— 刘若英', tags: ['accept', 'healing'], tone: 'night' },
-
-  // —— 找到意义（meaning）
-  { id: 'lyr-meaning-015', text: '当你觉得没有人爱你时，想想还有我。', source: '《当爱已成往事》— 张国荣/林忆莲', tags: ['meaning', 'love'], tone: 'night' },
-  { id: 'lyr-meaning-016', text: '不必在意我是谁，快乐就好。', source: '《我是谁》— 张学友', tags: ['meaning', 'present'], tone: 'dawn' },
-  { id: 'lyr-meaning-017', text: '我相信我就是我，我相信明天。', source: '《我相信》— 杨培安', tags: ['meaning', 'hope'], tone: 'dawn' },
 
   // —— 就在此刻（present）
   { id: 'lyr-present-015', text: '此时此刻，和你在一起。', source: '《此时此刻》— 许巍', tags: ['present', 'love'], tone: 'dawn' },
