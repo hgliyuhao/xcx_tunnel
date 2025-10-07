@@ -299,41 +299,6 @@ const echoes = [
   { id: 'lyr-hope-016', text: '夜空中最亮的星，能否指引我前行。', source: '《夜空中最亮的星》— 逃跑计划', tags: ['hope', 'light'], tone: 'night' },
   { id: 'lyr-hope-017', text: '明天会更好，别轻易说你不行。', source: '《明天会更好》— 群星', tags: ['hope'], tone: 'night' },
 
-  // —— 慢一点（slow）
-  { id: 'lyr-slow-015', text: '慢慢喜欢你，慢慢地亲近。', source: '《慢慢喜欢你》— 莫文蔚', tags: ['slow', 'love'], tone: 'night' },
-  { id: 'lyr-slow-016', text: '让一切随风，去看海阔天空。', source: '《随风》— 任贤齐', tags: ['slow', 'present'], tone: 'night' },
-  { id: 'lyr-slow-017', text: '把心放慢，听见花开的声音。', source: '《花开》— 汪峰', tags: ['slow', 'healing'], tone: 'night' },
-
-  // —— 照见自己（see_self）
-  { id: 'lyr-see-015', text: '我不愿让你一个人，独自承受这世界的残忍。', source: '《我不愿让你一个人》— 五月天', tags: ['see_self', 'love'], tone: 'night' },
-  { id: 'lyr-see-016', text: '越过山丘，才发现无人等候。', source: '《山丘》— 李宗盛', tags: ['see_self', 'meaning'], tone: 'night' },
-  { id: 'lyr-see-017', text: '当我抬起头，看见自己的光。', source: '《看见什么吃什么》— 陈粒', tags: ['see_self', 'light'], tone: 'night' },
-
-  // —— 把梦落地（dream）
-  { id: 'lyr-dream-015', text: '我的未来不是梦，我认真地过每一分钟。', source: '《我的未来不是梦》— 张雨生', tags: ['dream', 'step'], tone: 'dawn' },
-  { id: 'lyr-dream-016', text: '没有什么能够阻挡，你对自由的向往。', source: '《蓝莲花》— 许巍', tags: ['dream', 'light'], tone: 'dawn' },
-  { id: 'lyr-dream-017', text: '回到最初的美好。', source: '《稻香》— 周杰伦', tags: ['dream', 'present'], tone: 'dawn' },
-
-  // —— 好好爱（love）
-  { id: 'lyr-love-015', text: '爱真的需要勇气，来面对流言蜚语。', source: '《勇气》— 梁静茹', tags: ['love', 'rescue'], tone: 'night' },
-  { id: 'lyr-love-016', text: '至少还有你，让我可以勇敢前进。', source: '《至少还有你》— 林忆莲', tags: ['love', 'hope'], tone: 'night' },
-  { id: 'lyr-love-017', text: '让我爱你，直到天荒地老。', source: '《天荒地老》— 张学友', tags: ['love'], tone: 'night' },
-
-  // —— 心怀感恩（thanks）
-  { id: 'lyr-thanks-015', text: '感恩的心，感谢有你。', source: '《感恩的心》— 欧阳菲菲', tags: ['thanks', 'love'], tone: 'dawn' },
-  { id: 'lyr-thanks-016', text: '谢谢你陪我走过风和雨。', source: '《谢谢你的爱》— 刘德华', tags: ['thanks', 'love'], tone: 'dawn' },
-  { id: 'lyr-thanks-017', text: '把最真的感谢留给最真的你。', source: '《谢谢你》— 陈势安', tags: ['thanks'], tone: 'dawn' },
-
-  // —— 持续精进（learn / growth）
-  { id: 'lyr-learn-015', text: '不经历风雨，怎么见彩虹。', source: '《真心英雄》— 李宗盛/成龙/周华健/张学友', tags: ['learn', 'restart'], tone: 'dawn' },
-  { id: 'lyr-learn-016', text: '给自己一点时间，去成为更好的自己。', source: '《给自己的歌》— 李宗盛', tags: ['learn', 'present'], tone: 'dawn' },
-  { id: 'lyr-learn-017', text: '走得再远，也别忘了为什么出发。', source: '《平凡之路》— 朴树', tags: ['learn', 'meaning'], tone: 'dawn' },
-
-  // —— 就在此刻（present）
-  { id: 'lyr-present-015', text: '此时此刻，和你在一起。', source: '《此时此刻》— 许巍', tags: ['present', 'love'], tone: 'dawn' },
-  { id: 'lyr-present-016', text: '此刻到永远，别让遗憾出现。', source: '《此刻到永远》— 吴克群', tags: ['present', 'step'], tone: 'dawn' },
-  { id: 'lyr-present-017', text: '把悲伤留给自己，把快乐送给你。', source: '《把悲伤留给自己》— 陈升', tags: ['present', 'love'], tone: 'night' },
-
   // —— 拉自己一把（rescue / self-help）
   { id: 'lyr-rescue-015', text: '我不怕千万人阻挡，只怕自己投降。', source: '《倔强》— 五月天', tags: ['rescue', 'step'], tone: 'dawn' },
   { id: 'lyr-rescue-016', text: '爱你孤身走暗巷，爱你不跪的模样。', source: '《孤勇者》— 陈奕迅', tags: ['rescue', 'restart'], tone: 'night' },

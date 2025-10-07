@@ -1,17 +1,20 @@
-﻿const app = getApp();
+const app = getApp();
 const { getEchoes, getPreferenceGroups } = require('../../services/echoService');
 
 const WHISPERS = [
-  '静下心来聆听自己的呼吸。',
+  '静下心来聆听城市的呼吸。',
+  '生命自有它的节奏和安排',
   '轻轻拥抱自己的脆弱，那里藏着你最真实的力量',
-  '在喧嚣之中，留一个角落给内心真实的声音',
-  '安住于此刻的宁静',
-  '生命自有它的节奏和安排'
+  '留一个角落给内心真实的声音'
 ];
+
+const SWIPE_DISTANCE = 60;
+const SWIPE_DURATION = 600;
+const SWIPE_VERTICAL_LIMIT = 80;
 
 Page({
   data: {
-    slogan: '给自己更多的爱',
+    slogan: '给自己更多的爱与勇气',
     loading: true,
     activeEcho: null,
     echoes: [],
@@ -45,6 +48,9 @@ Page({
     this.setupWhisperLoop();
     this.registerGlobalListeners();
     this.computeSafeArea();
+    this._echoTransitioning = false;
+    this._echoSwipeHandled = false;
+    this._echoTouchStart = null;
   },
 
   onShow() {
@@ -101,7 +107,7 @@ Page({
     const info = wx.getSystemInfoSync();
     const statusBar = info.statusBarHeight || 0;
     const menuRect = wx.getMenuButtonBoundingClientRect ? wx.getMenuButtonBoundingClientRect() : null;
-    const extraOffset = 32;
+    const extraOffset = 16;
     let topBarTop = statusBar + 20 + extraOffset;
     let contentTopPadding = statusBar + 140 + extraOffset;
     if (menuRect) {
@@ -215,7 +221,7 @@ Page({
   },
 
   onNextEcho() {
-    if (this.data.loading) {
+    if (this._echoTransitioning || this.data.loading) {
       return;
     }
     if (!this.data.echoes.length) {
@@ -406,7 +412,7 @@ Page({
   },
 
   onEchoCardTap() {
-    if (this._echoSwipeHandled || this.data.loading || !this.data.activeEcho) {
+    if (this._echoSwipeHandled || this._echoTransitioning || this.data.loading || !this.data.activeEcho) {
       this._echoSwipeHandled = false;
       return;
     }
@@ -414,7 +420,7 @@ Page({
   },
 
   onEchoTouchStart(event) {
-    if (!event.touches || !event.touches.length) {
+    if (this._echoTransitioning || this.data.loading || !this.data.activeEcho || !event.touches || !event.touches.length) {
       return;
     }
     const touch = event.touches[0];
@@ -427,7 +433,7 @@ Page({
   },
 
   onEchoTouchEnd(event) {
-    if (!this._echoTouchStart || !event.changedTouches || !event.changedTouches.length) {
+    if (this._echoTransitioning || !this._echoTouchStart || !event.changedTouches || !event.changedTouches.length) {
       this._echoTouchStart = null;
       return;
     }
@@ -436,24 +442,27 @@ Page({
     const dy = touch.clientY - this._echoTouchStart.y;
     const dt = Date.now() - this._echoTouchStart.time;
     this._echoTouchStart = null;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) && dt < 600) {
+    const horizontalSwipe = Math.abs(dx) > SWIPE_DISTANCE && Math.abs(dx) > Math.abs(dy) && Math.abs(dy) < SWIPE_VERTICAL_LIMIT && dt < SWIPE_DURATION;
+    if (horizontalSwipe && !this._echoTransitioning) {
       this._echoSwipeHandled = true;
       this.onNextEcho();
     }
   },
   switchEcho(nextEcho, immediate = false) {
     this._echoSwipeHandled = false;
+    this.clearEchoAnimationTimers();
     if (!nextEcho) {
-      this.clearEchoAnimationTimers();
       this.setData({ activeEcho: null, echoAnimation: '' });
+      this._echoTransitioning = false;
       return;
     }
-    this.clearEchoAnimationTimers();
+    this._echoTransitioning = true;
     if (immediate) {
       this.setData({ activeEcho: nextEcho, echoAnimation: 'echo-enter' });
       this.echoAnimationTimer = setTimeout(() => {
         this.setData({ echoAnimation: '' });
         this.echoAnimationTimer = null;
+        this._echoTransitioning = false;
       }, 340);
       return;
     }
@@ -464,6 +473,7 @@ Page({
       this.echoAnimationTimer = setTimeout(() => {
         this.setData({ echoAnimation: '' });
         this.echoAnimationTimer = null;
+        this._echoTransitioning = false;
       }, 340);
     }, 140);
   },
@@ -477,6 +487,7 @@ Page({
       clearTimeout(this.echoAnimationTimer);
       this.echoAnimationTimer = null;
     }
+    this._echoTransitioning = false;
   },
 
   noop() {}
